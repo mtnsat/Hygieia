@@ -2,7 +2,7 @@ use dashboarddb;
 
 db.createUser({
   user: "dashboarduser",
-  pwd: "dbpassword",
+  pwd: "dbpass",
   "roles": [
     {
       "role": "readWrite",
