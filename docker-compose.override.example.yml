@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   api:
     # environment: # for a full list check the corresponding properties-builder file
