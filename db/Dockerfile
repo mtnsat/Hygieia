@@ -1,9 +1,9 @@
 FROM mongo:latest
 
-ADD db-setup.sh /tmp/db-setup.sh
+ADD wait-for /tmp/wait-for
 ADD db-setup.js /tmp/db-setup.js
 
-RUN chmod +x /tmp/db-setup.sh
+RUN chmod +x /tmp/wait-for
 RUN chmod +x /tmp/db-setup.js
 
-CMD ["/tmp/db-setup.sh"]
+CMD ["/tmp/wait-for db:27017 -- mongo db/admin < /tmp/db-setup.js"]
