@@ -1,8 +1,10 @@
 FROM docker.io/nginx:latest
 
-COPY docker/default.conf /etc/nginx/conf.d/default.conf.templ
-COPY docker/conf-builder.sh /usr/bin/conf-builder.sh
-COPY dist /usr/share/nginx/html
+COPY /etc/ssl/private/mtnsat.io.key /etc/ssl/mtnsat.io.key
+COPY /etc/ssl/certs/mtnsat.io.crt /etc/ssl/mtnsat.io.crt
+COPY default.conf /etc/nginx/conf.d/default.conf.templ
+COPY conf-builder.sh /usr/bin/conf-builder.sh
+COPY html /usr/share/nginx/html
 RUN chown -R nginx:nginx /usr/share/nginx/html/
 
 EXPOSE 80 443
