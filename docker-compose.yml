@@ -5,19 +5,22 @@ version: '3'
 services:
   db:
     image: mongo:latest
+     restart: always
     ports:
       - "27017:27017"
     volumes:
       - "db-data:/data/db"
-
+   
   db-setup:
     build: db
+    restart: always
     depends_on:
       - db
 
   api:
     build: api
     image: hygieia-api
+    restart: always
     depends_on:
       - db-setup
     ports:
@@ -26,6 +29,7 @@ services:
   api-audit:
     build: api-audit
     image: hygieia-api-audit
+    restart: always
     depends_on:
       - db-setup
     ports:
@@ -34,6 +38,7 @@ services:
   ui:
     build: UI
     image: hygieia-ui
+    restart: always
     depends_on:
       - api
     ports:
@@ -67,6 +72,7 @@ services:
   chat-ops-collector:
     build: collectors/misc/chat-ops
     image: hygieia-chat-ops-collector
+    restart: always
     depends_on:
       - db-setup
 
@@ -79,12 +85,14 @@ services:
   github-collector:
     build: collectors/scm/github
     image: hygieia-github-scm-collector
+    restart: always
     depends_on:
       - db-setup
 
   github-graphql-collector:
     build: collectors/scm/github-graphql
     image: hygieia-github-graphql-scm-collector
+    restart: always
     depends_on:
       - db-setup
 
@@ -103,6 +111,7 @@ services:
   jenkins-build-collector:
     build: collectors/build/jenkins
     image: hygieia-jenkins-build-collector
+    restart: always
     depends_on:
       - db-setup
 
@@ -121,6 +130,7 @@ services:
   jira-collector:
     build: collectors/feature/jira
     image: hygieia-jira-feature-collector
+    restart: always
     depends_on:
       - db-setup
 
