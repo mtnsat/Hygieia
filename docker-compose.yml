@@ -13,7 +13,6 @@ services:
    
   db-setup:
     build: db
-    restart: always
     depends_on:
       - db
 
