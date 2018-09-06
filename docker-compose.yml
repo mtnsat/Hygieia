@@ -101,11 +101,19 @@ services:
   #   depends_on:
   #     - db-setup
 
+<<<<<<< HEAD
   # gitlab-scm-collector:
   #   build: collectors/feature/gitlab
   #   image: hygieia-gitlab-scm-collector
   #   depends_on:
   #     - db-setup
+=======
+  gitlab-scm-collector:
+    build: collectors/scm/gitlab
+    image: hygieia-gitlab-scm-collector
+    depends_on:
+      - db-setup
+>>>>>>> upstream/master
 
   jenkins-build-collector:
     build: collectors/build/jenkins
@@ -177,3 +185,4 @@ services:
 
 volumes:
   db-data:
+  certs:
